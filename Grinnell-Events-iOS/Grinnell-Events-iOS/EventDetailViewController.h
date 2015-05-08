@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
 @property (weak, nonatomic) IBOutlet UITableViewCell *availabilityCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *addToCalendarCell;
+@property (strong, nonatomic) IBOutlet UITableViewCell *descriptionCell;
 
 @end

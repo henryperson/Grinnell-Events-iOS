@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A388b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="CKB-Ui-aIa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="CKB-Ui-aIa">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <scenes>
         <!--Calendars-->
@@ -412,6 +412,7 @@
                         <outlet property="conflictImageView" destination="9H0-Dq-CVN" id="z3o-FX-myB"/>
                         <outlet property="conflictLabel" destination="7EP-tn-G4C" id="rKo-9f-2wh"/>
                         <outlet property="dateLabel" destination="l1N-al-e31" id="kTQ-Ev-oiu"/>
+                        <outlet property="descriptionCell" destination="Obm-a6-13w" id="rhf-R2-MbB"/>
                         <outlet property="descriptionTextView" destination="7VH-Wk-wwZ" id="TxB-8F-Cpx"/>
                         <outlet property="locationLabel" destination="IMN-cY-Tfx" id="gxj-dq-muv"/>
                         <outlet property="timeLabel" destination="vME-Qp-WzA" id="dgk-bx-MCQ"/>

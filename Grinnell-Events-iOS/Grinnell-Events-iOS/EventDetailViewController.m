@@ -50,12 +50,24 @@
     self.dateLabel.text = self.theEvent.date;
     self.titleLabel.text = self.theEvent.title;
     self.locationLabel.text = self.theEvent.location;
-    if (self.theEvent.detailDescription) {
+    
+    CGRect newFrame = self.descriptionTextView.frame;
+    if ([self.theEvent.detailDescription length] != 0) {
         self.descriptionTextView.text = self.theEvent.detailDescription;
+        // Here we find an appropriate height for the textView (based on the text), and resize the textView accordingly. Note that the cell is resized in heightForRowAtIndexPath.
+        
+        float height = [self findHeightForText:self.descriptionTextView.text havingWidth:300.0 andFont:[UIFont fontWithName:@"AvenirNext-Regular" size:13.0]];
+        newFrame.size.height = height; // Otherwise this extends past the cell
+        
+        [self.descriptionTextView setScrollEnabled:NO];
+        
     }
     else {
-        self.descriptionTextView.text = @"Sorry. No details were given for this event :(";
+        newFrame.size.height = 0;
+        self.descriptionTextView.text = @"";
+        self.descriptionCell.hidden = YES;
     }
+    self.descriptionTextView.frame = newFrame;
 
 }
 
@@ -173,15 +185,20 @@
 
     if (indexPath.section == 1) {
         
-        float height = [self findHeightForText:self.theEvent.detailDescription havingWidth:300.0 andFont:[UIFont fontWithName:@"AvenirNext-Regular" size:13.0]];
+        float height = [self findHeightForText:self.descriptionTextView.text havingWidth:300.0 andFont:[UIFont fontWithName:@"AvenirNext-Regular" size:13.0]];
+        if ([self.descriptionTextView.text  isEqual: @""]) {
+            // No content, need cell to not exist
+            return 0;
+        }
         
         NSLog(@"HEIGHT: %f and STRING: %@", height, self.theEvent.detailDescription);
         
-        if (height > 120) {
-            return 120;
+        if (height < 120) {
+            // We don't want the cell to be too small.
+            return [super tableView:tableView heightForRowAtIndexPath:indexPath];
         }
         else {
-            return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+           return height + 10;
         }
 
     }else {
